@@ -12,7 +12,7 @@ arguments
 from torch.utils.data import Dataset, DataLoader
 import torch
 import numpy as np
-import utils as read_dataframes
+from utils import read_dataframes
 
 
 class mocapDataset(Dataset):
@@ -144,9 +144,18 @@ def get_inputs_dataframe(df, value_col, names_col=None, included_name=None):
     # identifiers given in the included_name are taken
     # exception for markers
     if 'marker' in names_col:
+        # because markers can be written in a different order
         all_values = np.array([np.array(i)[:,:,np.where(np.isin(names, included_name))]
                                for i, names in zip(df[value_col], df[names_col])])
         return all_values[:,:,:,0,:]
+    # grf_names_3d
+    if 'grf_names_3d' in names_col:
+        # for grf results (this has a special case as well)
+        # for now, the same with "marker" col
+        all_values = np.array([np.array(i)[:,:,np.where(np.isin(names, included_name))]
+                               for i, names in zip(df[value_col], df[names_col])])
+        return all_values[:,:,:,0,:]
+    # special cases
     all_values = np.array([i for i in df[value_col].values])
     if len(all_values.shape) == 1:
         # a special case, for now is single values such as labels that can be
