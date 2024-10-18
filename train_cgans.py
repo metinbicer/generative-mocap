@@ -536,7 +536,8 @@ def generate_with_labels(gen, z_dim, n_samples, label_contd, label_discr,
         gen (torch.Decoder or Model): generator model.
         z_dim (int): latent vector dimension.
         n_samples (int): number of synthetic samples to be generated.
-        label_untransformed (torch.Tensor): label(s) for synthetic data.
+        label_contd (torch.Tensor): continous label(s) for synthetic data.
+        label_discr (torch.Tensor): discrete label(s) for synthetic data.
         back_transform_input (torchvision.transforms or transformation):
         transformations used to convert generated data to original domain.
         transform_labels (torchvision.transforms or transformation, optional):
@@ -956,7 +957,7 @@ def multicGAN():
     # define ages at which n_samples of data will be generated
     label_contd_lims = [[15,71,10], [45,101,20],[785,1101,50],[0.16,2.41,0.5]]
     label_discr_lims = [[0, 1.01, 1]]
-    model_name = 'mul'
+    model_name = 'multicgan'
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     train_cgan(marker_names, grf_names, ik_names, value_cols,
                names_cols, label_col_contd, label_col_discr,
