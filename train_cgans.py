@@ -462,16 +462,18 @@ def save_data_training(decoder, z_dim, n_samples, label_contd, label_discr,
     generates and saves synthetic data during training
 
     Args:
-        decoder (TYPE): DESCRIPTION.
-        z_dim (TYPE): DESCRIPTION.
-        n_samples (TYPE): DESCRIPTION.
-        label_contd (TYPE): DESCRIPTION.
-        label_discr (TYPE): DESCRIPTION.
-        back_transform_input (TYPE): DESCRIPTION.
-        transform_labels (TYPE): DESCRIPTION.
-        save_file (TYPE): DESCRIPTION.
-        epoch (TYPE): DESCRIPTION.
-        seed (TYPE): DESCRIPTION.
+        decoder (Decoder): decoder/generator model.
+        z_dim (int): latent vector dimension.
+        n_samples (int): number of synthetic samples to be generated.
+        label_contd (TYPE): continous labels.
+        label_discr (TYPE): discrete labels.
+        back_transform_input (torchvision.transforms or transformation): transformations
+        used to convert generated data to original domain.
+        transform_labels (torchvision.transforms or transformation): transformations
+        used to normalize the labels.
+        save_file (str): path to the file to save generated data.
+        epoch (int): to append the saved filename.
+        seed (int): to append the saved filename.
 
     Returns:
         None.
