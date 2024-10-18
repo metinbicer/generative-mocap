@@ -37,7 +37,7 @@
 
 # Our Approach
 
-Here is an example of an experimental and a synthetic trial from [the first paper](https://doi.org/10.1016/j.jbiomech.2022.111301):
+Here is an example of a real and a synthetic trial from [the first paper](https://doi.org/10.1016/j.jbiomech.2022.111301):
 
 ![Animation](Figures/Animation.gif)
 
